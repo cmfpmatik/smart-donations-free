@@ -1,6 +1,6 @@
 === Donations Made Easy - Smart Donations ===
-Contributors: EDGARROJAS
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=edseventeen%40gmail.com
+Contributors: EDGARROJAS (original) & Oarces Dev (free version)
+Donate link: -
 Tags: donations, donate, donation buttons, donation widget,widget, paypal, donations, donation page, donation plugin, nonprofit donations, campaign donations, political campaigns, donations, donation widget, donate page, donate plugin,charity, fundraising, shortcode, forms, widgets
 Requires at least: 3.1
 Tested up to: 4.2.1
@@ -8,15 +8,14 @@ Stable tag: 4.0.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The all in one donation plugin, create different kind of donations, set goals, monitor your results, donation forms, thank you emails and more...
+The all in one donation plugin, create for free differents kind of donations, set goals, monitor your results, donation forms, thank you emails and more...
 
 == Description ==
 
 Smart Donations
 
-Want to see a demo? check out the video tutorials here: http://rednao.com/smartdonations.html
+Want to know more? For support and feedback please visit: http://dev.oarces.fr/wordpress/plugins-wp/smart-donations-free-plugin-forked-from-smart-donations-plugin/
 
-For support and feedback please visit http://rednao.uservoice.com/ i will be glad to help you or see your idea!!
 
  The all in one donation plugin, create different kind of donations, set goals, monitor your results, create donation forms, set thank you emails. Currently it supports paypal, stripe and five different styles of donations:
  
@@ -48,8 +47,8 @@ Also you can customize the paypal currency that you want to use for each donatio
 
 = How can i get help=
 
-You can check the smart donations video tutorial at http://rednao.com/tutorials.htm, if you have any question you can reach me at
-https://www.facebook.com/SmartDonations
+You can check the original smart donations (not totaly free) video tutorial at http://rednao.com/tutorials.htm, if you have any question you can reach me at
+http://dev.oarces.fr/forums/forum/wordpress/plugins/smart-donation-free/
 
 
 = My progress indicators are not getting refreshed when i receive a donation =
