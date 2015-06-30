@@ -96,7 +96,7 @@ function SmartDonations_GetDonationTypeSelected(donationTypeSelected,donationPro
 function SmartDonations_SetSmartDonationConfiguration(rthis,div,donationTypeSelected,donationOptions)
 {
     var business=rnJQuery('#smartDonationsEmail').val();
-    var donationProvider=rnJQuery('#rednao_smart_donations_provider').val();
+    var donationProvider=rnJQuery('#rednao_SMARTFREE_DONATIONS_provider').val();
 
 
 

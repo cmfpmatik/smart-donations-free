@@ -16,7 +16,7 @@ if (isset($_POST['license_key'])) {
 
     if($email!=null||$key!=null)
     {
-        if(smart_donations_check_license($email,$key,$error,true))
+        if(SMARTFREE_DONATIONS_check_license($email,$key,$error,true))
         {
            echo "Licence validation successful, you can now use the pro features =). Thanks!!";
             return;

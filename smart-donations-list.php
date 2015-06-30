@@ -3,9 +3,9 @@
 <div class="bootstrap-wrapper">
 <?php
 
-wp_enqueue_style('smart-donations-bootstrap-theme',SMART_DONATIONS_PLUGIN_URL.'css/bootstrap/bootstrap-theme.css');
-wp_enqueue_style('smart-donations-bootstrap',SMART_DONATIONS_PLUGIN_URL.'css/bootstrap/bootstrap-scopped.css');
-//wp_enqueue_style('smart-donations-bootstrap-theme',SMART_DONATIONS_PLUGIN_URL.'css/bootstrap/bootstrap-theme.min.css.min.css');
+wp_enqueue_style('smart-donations-bootstrap-theme',SMARTFREE_DONATIONS_PLUGIN_URL.'css/bootstrap/bootstrap-theme.css');
+wp_enqueue_style('smart-donations-bootstrap',SMARTFREE_DONATIONS_PLUGIN_URL.'css/bootstrap/bootstrap-scopped.css');
+//wp_enqueue_style('smart-donations-bootstrap-theme',SMARTFREE_DONATIONS_PLUGIN_URL.'css/bootstrap/bootstrap-theme.min.css.min.css');
 
 if(!defined('ABSPATH'))
     die('Forbidden');
@@ -15,7 +15,7 @@ if (isset($_GET['action'])) {
 }else
     $action="";
 if($action==="add"){
-    include(SMART_DONATIONS_DIR.'/smart-donations-add-new.php');
+    include(SMARTFREE_DONATIONS_DIR.'/smart-donations-add-new.php');
     return;
 }
 require_once('smart-donations-messages.php');
@@ -45,13 +45,13 @@ if($action!=null&&$donation_id!=null)
 
     if($action==="delete")
     {
-        $wpdb->query($wpdb->prepare("delete from ".SMART_DONATIONS_TABLE_NAME." WHERE donation_id=%d",$donation_id));
-        delete_transient("rednao_smart_donations_donation_$donation_id");
+        $wpdb->query($wpdb->prepare("delete from ".SMARTFREE_DONATIONS_TABLE_NAME." WHERE donation_id=%d",$donation_id));
+        delete_transient("rednao_SMARTFREE_DONATIONS_donation_$donation_id");
     }
 
     if($action==="edit")
     {
-        $result=$wpdb->get_results($wpdb->prepare("SELECT * FROM ".SMART_DONATIONS_TABLE_NAME." WHERE donation_id=%d",$donation_id));
+        $result=$wpdb->get_results($wpdb->prepare("SELECT * FROM ".SMARTFREE_DONATIONS_TABLE_NAME." WHERE donation_id=%d",$donation_id));
 
         if(count($result)>0)
         {
@@ -60,7 +60,7 @@ if($action!=null&&$donation_id!=null)
             {
                 $options="jQuery.parseJSON('".$result->options."')";
             }else
-                $options=rednao_smart_donations_json_object($result->options,$result->styles,null,null,null,null);
+                $options=rednao_SMARTFREE_DONATIONS_json_object($result->options,$result->styles,null,null,null,null);
 
             $script=<<<EOF
                         <script type="text/javascript" language="javascript">
@@ -73,7 +73,7 @@ if($action!=null&&$donation_id!=null)
                         </script>
 EOF;
             echo sprintf($script,$result->donation_id,$result->email,$result->donation_name,$result->returning_url,$options,$result->donation_provider);
-            include(SMART_DONATIONS_DIR.'/smart-donations-add-new.php');
+            include(SMARTFREE_DONATIONS_DIR.'/smart-donations-add-new.php');
             return;
 
         }
@@ -105,7 +105,7 @@ class Donations extends WP_List_Table
     {
         $this->_column_headers=array($this->get_columns(),array(),$this->get_sortable_columns());
         global $wpdb;
-        $this->items=$result=$wpdb->get_results("SELECT donation_id,donation_name,email,donation_type FROM ".SMART_DONATIONS_TABLE_NAME);
+        $this->items=$result=$wpdb->get_results("SELECT donation_id,donation_name,email,donation_type FROM ".SMARTFREE_DONATIONS_TABLE_NAME);
     }
 
     function get_sortable_columns()

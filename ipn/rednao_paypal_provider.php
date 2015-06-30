@@ -140,7 +140,7 @@ class rednao_paypal_provider extends   rednao_provider_base{
 		// STEP 2: Post IPN data back to paypal to validate
 		$url="https://www.paypal.com/cgi-bin/webscr";
 
-		if(SMART_DONATIONS_SANDBOX=="y")
+		if(SMARTFREE_DONATIONS_SANDBOX=="y")
 			$url="https://www.sandbox.paypal.com/cgi-bin/webscr";
 		$res=wp_remote_post($url,$args);
 
@@ -176,7 +176,7 @@ class rednao_paypal_provider extends   rednao_provider_base{
 	{
 		RedNaoAddMessage($receiverEmail);
 		global $wpdb;
-		$count = $wpdb->get_var($wpdb->prepare("select count(*) from " . SMART_DONATIONS_TABLE_NAME . " where email=%s", $receiverEmail));
+		$count = $wpdb->get_var($wpdb->prepare("select count(*) from " . SMARTFREE_DONATIONS_TABLE_NAME . " where email=%s", $receiverEmail));
 
 		return $count > 0;
 	}

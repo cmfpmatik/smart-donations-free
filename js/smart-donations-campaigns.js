@@ -28,9 +28,9 @@ rnJQuery(function()
 
     function ClearDialog()
     {
-        rnJQuery("#smart_donations_campaign_name").val(''),
-        rnJQuery("#smart_donations_campaign_description").val(''),
-        rnJQuery("#smart_donations_campaign_goal").val(0);
+        rnJQuery("#SMARTFREE_DONATIONS_campaign_name").val(''),
+        rnJQuery("#SMARTFREE_DONATIONS_campaign_description").val(''),
+        rnJQuery("#SMARTFREE_DONATIONS_campaign_goal").val(0);
         rnJQuery("#smartDonationsThankYouEmail").val('');
         rnJQuery("#smartDonationsEmailSubject").val('');
         rnJQuery("#smartDonationsEmailFrom").val('');
@@ -56,10 +56,10 @@ rnJQuery(function()
             rnJQuery('#campaignSaveButton').RNWait('start');
            rnJQuery(this).attr('disabled', 'disabled');
             var data={
-                action:"rednao_smart_donations_add_campaign",
-                name:rnJQuery("#smart_donations_campaign_name").val(),
-                description:rnJQuery("#smart_donations_campaign_description").val(),
-                goal:rnJQuery("#smart_donations_campaign_goal").val(),
+                action:"rednao_SMARTFREE_DONATIONS_add_campaign",
+                name:rnJQuery("#SMARTFREE_DONATIONS_campaign_name").val(),
+                description:rnJQuery("#SMARTFREE_DONATIONS_campaign_description").val(),
+                goal:rnJQuery("#SMARTFREE_DONATIONS_campaign_goal").val(),
                 thank_you_email:rnJQuery('#smartDonationsThankYouEmail').val(),
                 email_subject:rnJQuery('#smartDonationsEmailSubject').val(),
                 email_from:rnJQuery('#smartDonationsEmailFrom').val()
@@ -112,12 +112,12 @@ rnJQuery(function()
             rnJQuery('#campaignSaveButton').RNWait('start');
             rnJQuery(this).attr('disabled', 'disabled');
             var data={
-                action:"rednao_smart_donations_edit_campaign",
+                action:"rednao_SMARTFREE_DONATIONS_edit_campaign",
                 campaign_id:campaign.campaign_id,
-                name:rnJQuery("#smart_donations_campaign_name").val(),
-                description:rnJQuery("#smart_donations_campaign_description").val(),
+                name:rnJQuery("#SMARTFREE_DONATIONS_campaign_name").val(),
+                description:rnJQuery("#SMARTFREE_DONATIONS_campaign_description").val(),
                 thank_you_email:rnJQuery('#smartDonationsThankYouEmail').val(),
-                goal:rnJQuery("#smart_donations_campaign_goal").val(),
+                goal:rnJQuery("#SMARTFREE_DONATIONS_campaign_goal").val(),
                 email_subject:rnJQuery('#smartDonationsEmailSubject').val(),
                 email_from:rnJQuery('#smartDonationsEmailFrom').val()
             };
@@ -126,9 +126,9 @@ rnJQuery(function()
             rnJQuery.post(ajaxurl,data,ajaxCompleted);
         });
 
-        rnJQuery("#smart_donations_campaign_name").val(campaign.name),
-        rnJQuery("#smart_donations_campaign_description").val(campaign.description),
-        rnJQuery("#smart_donations_campaign_goal").val(campaign.goal);
+        rnJQuery("#SMARTFREE_DONATIONS_campaign_name").val(campaign.name),
+        rnJQuery("#SMARTFREE_DONATIONS_campaign_description").val(campaign.description),
+        rnJQuery("#SMARTFREE_DONATIONS_campaign_goal").val(campaign.goal);
         rnJQuery("#smartDonationsThankYouEmail").val(campaign.thank_you_email);
         rnJQuery("#smartDonationsEmailSubject").val(campaign.email_subject);
         rnJQuery("#smartDonationsEmailFrom").val(campaign.email_from);

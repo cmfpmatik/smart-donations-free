@@ -1041,7 +1041,7 @@ smartDonationsFormDonationGenerator.prototype.SaveForm=function()
         formValues=formValues.substr(1);
 
     var data={
-        action:"rednao_smart_donations_save_form_values",
+        action:"rednao_SMARTFREE_DONATIONS_save_form_values",
         emailToNotify:this.emailToNotify,
         additionalData:JSON.stringify({anonymousDonation:(this.GetRootContainer().find('.redNaoAnonymousDonation').is(':checked')?'y':'n')}),
         formString:formValues,

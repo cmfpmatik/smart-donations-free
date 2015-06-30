@@ -7,21 +7,21 @@
  * To change this template use File | Settings | File Templates.
  */
 require_once("smart-donations-helpers.php");
-add_action( 'widgets_init', 'rednao_smart_donations_register_widget' );
+add_action( 'widgets_init', 'rednao_SMARTFREE_DONATIONS_register_widget' );
 
-function rednao_smart_donations_register_widget()
+function rednao_SMARTFREE_DONATIONS_register_widget()
 {
-    register_widget('rednao_smart_donations_widget');
+    register_widget('rednao_SMARTFREE_DONATIONS_widget');
 }
 
-class rednao_smart_donations_widget extends WP_Widget
+class rednao_SMARTFREE_DONATIONS_widget extends WP_Widget
 {
-    function rednao_smart_donations_widget()
+    function rednao_SMARTFREE_DONATIONS_widget()
     {
         $widget_ops = array(
-            'classname' => 'rednao_smart_donations_widget', 'description' => 'Let you insert an smart donation in any area'
+            'classname' => 'rednao_SMARTFREE_DONATIONS_widget', 'description' => 'Let you insert an smart donation in any area'
         );
-        $this->WP_Widget( 'rednao_smart_donations_widget', 'Smart Donations - Donation Button',$widget_ops );
+        $this->WP_Widget( 'rednao_SMARTFREE_DONATIONS_widget', 'Smart Donations - Donation Button',$widget_ops );
     }
 
     function form($instance)
@@ -32,7 +32,7 @@ class rednao_smart_donations_widget extends WP_Widget
         $title=$instance['title'];
 
         global $wpdb;
-        $results =$wpdb->get_results('select donation_id,donation_name from '.SMART_DONATIONS_TABLE_NAME);
+        $results =$wpdb->get_results('select donation_id,donation_name from '.SMARTFREE_DONATIONS_TABLE_NAME);
 
         ?>
 
@@ -59,13 +59,13 @@ class rednao_smart_donations_widget extends WP_Widget
         $new_instance['title'] =strip_tags($new_instance['title']);
         $new_instance['donation_id'] =strip_tags($new_instance['donation_id']);
 
-        delete_transient("rednao_smart_donations_donation_".$new_instance['donation_id']);
+        delete_transient("rednao_SMARTFREE_DONATIONS_donation_".$new_instance['donation_id']);
         return $new_instance;
     }
 
     function widget($args, $instance) { // displays the widget
         $id=$instance['donation_id'];
-        return rednao_smart_donations_load_donation($id,$instance['title'],false);
+        return rednao_SMARTFREE_DONATIONS_load_donation($id,$instance['title'],false);
     }
 
 

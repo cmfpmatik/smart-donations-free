@@ -74,5 +74,5 @@ if(isset($_GET["posting"]))
     </form>
 
     <p>Latest error log</p>
-    <textarea style="width:500px;height: 500px;"><?php echo get_option('smart_donations_latest_error'); ?></textarea>
+    <textarea style="width:500px;height: 500px;"><?php echo get_option('SMARTFREE_DONATIONS_latest_error'); ?></textarea>
 </div>

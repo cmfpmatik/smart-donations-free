@@ -12,7 +12,7 @@ class rednao_provider_processor
 	/** @var  connection_provider_base */
 	private $provider;
 	/**
-	 * @var smart_donations_db_privider
+	 * @var SMARTFREE_DONATIONS_db_privider
 	 */
 	private $dbProvider;
 
@@ -20,7 +20,7 @@ class rednao_provider_processor
 	function __construct(rednao_provider_base $provider)
 	{
 		$this->provider = $provider;
-		$this->dbProvider = new smart_donations_db_privider();
+		$this->dbProvider = new SMARTFREE_DONATIONS_db_privider();
 	}
 
 	public function ProcessCall()
@@ -73,11 +73,11 @@ class rednao_provider_processor
 			if ($this->provider->GetCampaignId()) {
 				$campaign_id = $this->provider->GetCampaignId();
 				global $wpdb;
-				$result = $wpdb->get_results($wpdb->prepare("select progress_id from " . SMART_DONATIONS_PROGRESS_TABLE . " where campaign_id=%d", $campaign_id));
+				$result = $wpdb->get_results($wpdb->prepare("select progress_id from " . SMARTFREE_DONATIONS_PROGRESS_TABLE . " where campaign_id=%d", $campaign_id));
 				foreach ($result as $key => $value) {
-					delete_transient("rednao_smart_donations_progress_$value->progress_id");
+					delete_transient("rednao_SMARTFREE_DONATIONS_progress_$value->progress_id");
 				}
-				delete_transient("rednao_smart_donations_wall_" . $campaign_id);
+				delete_transient("rednao_SMARTFREE_DONATIONS_wall_" . $campaign_id);
 			}
 			$this->SendLogIfNeeded();
 			return true;
@@ -189,7 +189,7 @@ class rednao_provider_processor
 		$campaign_id = $properties['campaign_id'];
 		if ($campaign_id > 0) {
 			global $wpdb;
-			$results = $wpdb->get_results($wpdb->prepare("SELECT email_subject,email_from,thank_you_email FROM " . SMART_DONATIONS_CAMPAIGN_TABLE . " where campaign_id=%d", $campaign_id));
+			$results = $wpdb->get_results($wpdb->prepare("SELECT email_subject,email_from,thank_you_email FROM " . SMARTFREE_DONATIONS_CAMPAIGN_TABLE . " where campaign_id=%d", $campaign_id));
 
 			if (count($results) > 0) {
 				$result = $results[0];
@@ -271,7 +271,7 @@ class rednao_provider_processor
 		$email .= "</table>";
 		try {
 			global $wpdb;
-			$emailFrom = $wpdb->get_var($wpdb->prepare("SELECT email_from FROM " . SMART_DONATIONS_CAMPAIGN_TABLE . " where campaign_id=%d", $properties['campaign_id']));
+			$emailFrom = $wpdb->get_var($wpdb->prepare("SELECT email_from FROM " . SMARTFREE_DONATIONS_CAMPAIGN_TABLE . " where campaign_id=%d", $properties['campaign_id']));
 
 
 			$headers = 'MIME-Version: 1.0' . "\r\n";
@@ -305,7 +305,7 @@ class rednao_provider_processor
 			$headers = 'MIME-Version: 1.0' . "\r\n";
 			$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 			wp_mail(get_option('smartDonationsSendToLog'), 'Log', $rednaolog, $headers);
-			update_option('smart_donations_latest_error', $rednaolog);
+			update_option('SMARTFREE_DONATIONS_latest_error', $rednaolog);
 
 		}
 	}

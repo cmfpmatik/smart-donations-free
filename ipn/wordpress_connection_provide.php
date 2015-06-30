@@ -53,7 +53,7 @@ class wordpress_connection_provide  extends connection_provider_base
         // STEP 2: Post IPN data back to paypal to validate
         $url="https://www.paypal.com/cgi-bin/webscr";
 
-        if(SMART_DONATIONS_SANDBOX=="y")
+        if(SMARTFREE_DONATIONS_SANDBOX=="y")
             $url="https://www.sandbox.paypal.com/cgi-bin/webscr";
         $res=wp_remote_post($url,$args);
 

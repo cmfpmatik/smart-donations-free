@@ -16,7 +16,7 @@ $licensingError=0;
 
 if($email!=null||$key!=null)
 {
-    if(smart_donations_check_license($email,$key,$error,true))
+    if(SMARTFREE_DONATIONS_check_license($email,$key,$error,true))
     {
         require_once('smart-donations-analytics.php');
         return;

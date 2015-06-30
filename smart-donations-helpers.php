@@ -2,7 +2,7 @@
 
 
 
-function rednao_smart_donations_json_object($object,$styles,$amount,$goal,$donators,$returningUrl)
+function rednao_SMARTFREE_DONATIONS_json_object($object,$styles,$amount,$goal,$donators,$returningUrl)
 {
     $json="{";
     $variables=explode("&",$object);
@@ -14,7 +14,7 @@ function rednao_smart_donations_json_object($object,$styles,$amount,$goal,$donat
     }
     if($styles!=null)
     {
-        $json=$json."\"styles\":".rednao_smart_donations_json_object($styles,null,null,null,null,null).",";
+        $json=$json."\"styles\":".rednao_SMARTFREE_DONATIONS_json_object($styles,null,null,null,null,null).",";
     }
 
     if($amount!=null)
@@ -46,15 +46,15 @@ function rednao_smart_donations_json_object($object,$styles,$amount,$goal,$donat
     return $json;
 }
 
-function rednao_smart_donations_load_donation($id,$title,$returnComponent)
+function rednao_SMARTFREE_DONATIONS_load_donation($id,$title,$returnComponent)
 {
 
-    $options=get_transient("rednao_smart_donations_donation_$id");
+    $options=get_transient("rednao_SMARTFREE_DONATIONS_donation_$id");
     $options=false;
     if($options==false)
     {
         global $wpdb;
-        $result=$wpdb->get_results($wpdb->prepare("select options,styles,donation_type,returning_url from ".SMART_DONATIONS_TABLE_NAME." where donation_id=%d",$id));
+        $result=$wpdb->get_results($wpdb->prepare("select options,styles,donation_type,returning_url from ".SMARTFREE_DONATIONS_TABLE_NAME." where donation_id=%d",$id));
         if(count($result)>0)
         {
             $result=$result[0];
@@ -68,16 +68,16 @@ function rednao_smart_donations_load_donation($id,$title,$returnComponent)
                     $options=str_replace("\\\"","\"",$options);
                 }else
                 {
-                    $options=rednao_smart_donations_json_object($options,$styles,null,null,null,$returningUrl);
+                    $options=rednao_SMARTFREE_DONATIONS_json_object($options,$styles,null,null,null,$returningUrl);
                 }
-                set_transient("rednao_smart_donations_donation_$id",$options,60*60*24*31);
+                set_transient("rednao_SMARTFREE_DONATIONS_donation_$id",$options,60*60*24*31);
             }
         }else
             $options="";
 
     }
 
-	require_once(SMART_DONATIONS_DIR.'/donation_provider/donation_provider_config.php');
+	require_once(SMARTFREE_DONATIONS_DIR.'/donation_provider/donation_provider_config.php');
 	$donationProviderNames=array();
 	$donationProviderNames=apply_filters('smart-donations-register-provider',$donationProviderNames);
     wp_enqueue_script('jquery');
@@ -111,7 +111,7 @@ function rednao_smart_donations_load_donation($id,$title,$returnComponent)
 
     <script>
         var smartDonationsRootPath="<?php echo plugin_dir_url(__FILE__)?>";
-		var smartDonationsSandbox="<?php echo SMART_DONATIONS_SANDBOX ?>";
+		var smartDonationsSandbox="<?php echo SMARTFREE_DONATIONS_SANDBOX ?>";
 		var smartDonationsIPNUrl="<?php echo $ipnUrl.'?sd_ipn_trigger=1' ?>";
         if(!window.smartDonationsItemsToLoad)
             window.smartDonationsItemsToLoad=new Array();;
@@ -129,7 +129,7 @@ function rednao_smart_donations_load_donation($id,$title,$returnComponent)
         return "<div id='donationContainer$random'></div>
             <script>
                 var smartDonationsRootPath=\"".plugin_dir_url(__FILE__)."\";
-                 var smartDonationsSandbox=\"".SMART_DONATIONS_SANDBOX."\";
+                 var smartDonationsSandbox=\"".SMARTFREE_DONATIONS_SANDBOX."\";
                   var smartDonationsIPNUrl=\"".$ipnUrl.'?sd_ipn_trigger=1'."\";
 
                 if(!window.smartDonationsItemsToLoad)
@@ -143,16 +143,16 @@ function rednao_smart_donations_load_donation($id,$title,$returnComponent)
 
 
 
-function rednao_smart_donations_load_progress($id,$title,$returnComponent)
+function rednao_SMARTFREE_DONATIONS_load_progress($id,$title,$returnComponent)
 {
 
-    $options=get_transient("rednao_smart_donations_progress_$id");
+    $options=get_transient("rednao_SMARTFREE_DONATIONS_progress_$id");
     $options=false;
     if($options==false)
     {
         $options=null;
         global $wpdb;
-        $result=$wpdb->get_results($wpdb->prepare("select options,styles,campaign_id from ".SMART_DONATIONS_PROGRESS_TABLE." where progress_id=%d",$id));
+        $result=$wpdb->get_results($wpdb->prepare("select options,styles,campaign_id from ".SMARTFREE_DONATIONS_PROGRESS_TABLE." where progress_id=%d",$id));
         if(count($result)>0)
         {
             $result=$result[0];
@@ -164,16 +164,16 @@ function rednao_smart_donations_load_progress($id,$title,$returnComponent)
 
 
             if($campaign_id==0)
-                $result=$wpdb->get_results($wpdb->prepare("select coalesce(goal,0) goal,sum(mc_gross) amount,(select count(*) from ".SMART_DONATIONS_TRANSACTION_TABLE." where campaign_id=%d) donators
-                                                    from ".SMART_DONATIONS_TRANSACTION_TABLE." tran
-                                                    left join wp_smart_donations_campaign_table camp
+                $result=$wpdb->get_results($wpdb->prepare("select coalesce(goal,0) goal,sum(mc_gross) amount,(select count(*) from ".SMARTFREE_DONATIONS_TRANSACTION_TABLE." where campaign_id=%d) donators
+                                                    from ".SMARTFREE_DONATIONS_TRANSACTION_TABLE." tran
+                                                    left join wp_SMARTFREE_DONATIONS_campaign_table camp
                                                     on tran.campaign_id=camp.campaign_id
                                                     where tran.campaign_id=%d
                                                     group by tran.campaign_id,goal",$campaign_id,$campaign_id));
             else
-                $result=$wpdb->get_results($wpdb->prepare("select coalesce(goal,0) goal,sum(mc_gross) amount,(select count(*) from ".SMART_DONATIONS_TRANSACTION_TABLE." where campaign_id=%d) donators
-                                                    from ".SMART_DONATIONS_CAMPAIGN_TABLE." camp
-                                                    left join ".SMART_DONATIONS_TRANSACTION_TABLE." tran
+                $result=$wpdb->get_results($wpdb->prepare("select coalesce(goal,0) goal,sum(mc_gross) amount,(select count(*) from ".SMARTFREE_DONATIONS_TRANSACTION_TABLE." where campaign_id=%d) donators
+                                                    from ".SMARTFREE_DONATIONS_CAMPAIGN_TABLE." camp
+                                                    left join ".SMARTFREE_DONATIONS_TRANSACTION_TABLE." tran
                                                     on tran.campaign_id=camp.campaign_id
                                                     where camp.campaign_id=%d
                                                     group by tran.campaign_id,goal",$campaign_id,$campaign_id));
@@ -190,8 +190,8 @@ function rednao_smart_donations_load_progress($id,$title,$returnComponent)
 
             if($options!=null)
             {
-                $options=rednao_smart_donations_json_object($options,$styles,$amount,$goal,$donators,null);
-                set_transient("rednao_smart_donations_progress_$id",$options,60*60*24*31);
+                $options=rednao_SMARTFREE_DONATIONS_json_object($options,$styles,$amount,$goal,$donators,null);
+                set_transient("rednao_SMARTFREE_DONATIONS_progress_$id",$options,60*60*24*31);
             }
         }
 
@@ -243,17 +243,17 @@ function rednao_smart_donations_load_progress($id,$title,$returnComponent)
 
 
 
-function rednao_smart_donations_load_wall($campaignId,$title,$numberOfRows,$currency,$decimalSign,$thousandSeparator,$returnComponent)
+function rednao_SMARTFREE_DONATIONS_load_wall($campaignId,$title,$numberOfRows,$currency,$decimalSign,$thousandSeparator,$returnComponent)
 {
 
     $rows=Array();
-    $options=get_transient("rednao_smart_donations_wall_$campaignId");
+    $options=get_transient("rednao_SMARTFREE_DONATIONS_wall_$campaignId");
     $options=false;
     if($options==false)
     {
         $options=null;
         global $wpdb;
-        $results=$wpdb->get_results($wpdb->prepare("select case when is_anonymous=1 then 'anonymous' else payer_email end payer_email,case when is_anonymous=1 then 'anonymous' else first_name end first_name,case when is_anonymous=1 then '' else last_name end last_name, sum(mc_gross) amount from ".SMART_DONATIONS_TRANSACTION_TABLE." where campaign_id=%d group by payer_email,is_anonymous order by amount desc limit %d" ,$campaignId,$numberOfRows));
+        $results=$wpdb->get_results($wpdb->prepare("select case when is_anonymous=1 then 'anonymous' else payer_email end payer_email,case when is_anonymous=1 then 'anonymous' else first_name end first_name,case when is_anonymous=1 then '' else last_name end last_name, sum(mc_gross) amount from ".SMARTFREE_DONATIONS_TRANSACTION_TABLE." where campaign_id=%d group by payer_email,is_anonymous order by amount desc limit %d" ,$campaignId,$numberOfRows));
         if(count($results)>0)
         {
 
@@ -266,7 +266,7 @@ function rednao_smart_donations_load_wall($campaignId,$title,$numberOfRows,$curr
                                         "amount"=>htmlspecialchars($row->amount),
                 ));
             }
-            set_transient("rednao_smart_donations_wall_$campaignId",$rows,60*60*24*31);
+            set_transient("rednao_SMARTFREE_DONATIONS_wall_$campaignId",$rows,60*60*24*31);
         }
 
     }else

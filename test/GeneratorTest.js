@@ -21,7 +21,7 @@ TestCase("GeneratorTest", {
 
 
 
-         <form id='smart_donations_general_options'>
+         <form id='SMARTFREE_DONATIONS_general_options'>
          <div id="rednaoSmartDonaitions">
 
          <input type="hidden" name="donationId" id="smartDonationsDonationId" value=""/>
@@ -37,7 +37,7 @@ TestCase("GeneratorTest", {
          <hr/>
          <div class="category">
          <span>Donation Provider</span>
-         <select name="smartDonationsProvider" id="rednao_smart_donations_provider" style="margin-bottom:5px;">
+         <select name="smartDonationsProvider" id="rednao_SMARTFREE_DONATIONS_provider" style="margin-bottom:5px;">
          <option value="paypal" selected="sel">PayPal</option>
          <option value="wepay">WePay</option>
          </select>
@@ -75,7 +75,7 @@ TestCase("GeneratorTest", {
          </div>
          </form>
 
-         <form id='smart_donations_component_options' action="https://www.paypal.com/cgi-bin/webscr" method="post" class="donationForm" target="_blank">
+         <form id='SMARTFREE_DONATIONS_component_options' action="https://www.paypal.com/cgi-bin/webscr" method="post" class="donationForm" target="_blank">
 
 
          <!--Item Container--->
@@ -154,7 +154,7 @@ TestCase("GeneratorTest", {
         SmartDonations_donationTypeClicked(rnJQuery("#threebuttons"));
         SmartDonations_donationTypeClicked(rnJQuery("#slider"));
 
-        rnJQuery('#rednao_smart_donations_provider').val('wepay');
+        rnJQuery('#rednao_SMARTFREE_DONATIONS_provider').val('wepay');
         SmartDonations_donationTypeClicked(rnJQuery("#classicd"));
         SmartDonations_donationTypeClicked(rnJQuery("#textbox"));
         SmartDonations_donationTypeClicked(rnJQuery("#threebuttons"));

@@ -4,7 +4,7 @@
         init : function(ed, url) {
             javascriptUrl=url.substring(0,url.length-3);
             // Register command for when button is clicked
-            ed.addCommand('rednao_smart_donations_short_code_clicked', function(a,donationId) {
+            ed.addCommand('rednao_SMARTFREE_DONATIONS_short_code_clicked', function(a,donationId) {
                 if(rnJQuery('#redNaoSelection').val()=='button')
                     tinymce.execCommand('mceInsertContent', false, '[sdonations]'+donationId+'[/sdonations]');
                 if(rnJQuery('#redNaoSelection').val()=='progress')
@@ -27,11 +27,11 @@
             }),
 
             // Register buttons - trigger above command when clicked
-            ed.addButton('rednao_smart_donations_button', {title : 'Smart Donations', image: javascriptUrl + '/images/short_code_button.png',
+            ed.addButton('rednao_SMARTFREE_DONATIONS_button', {title : 'Smart Donations', image: javascriptUrl + '/images/short_code_button.png',
             onclick:function()
             {
                 var data={
-                    action:"rednao_smart_donations_list"
+                    action:"rednao_SMARTFREE_DONATIONS_list"
                 };
 
                 rnJQuery.post(ajaxurl,data,ajaxCompleted);
@@ -41,7 +41,7 @@
     });
 
 
-    tinymce.PluginManager.add('rednao_smart_donations_button', tinymce.plugins.rednao_smart_donations);
+    tinymce.PluginManager.add('rednao_SMARTFREE_DONATIONS_button', tinymce.plugins.rednao_smart_donations);
 })();
 var smartDonationsShortCodeDialog;
 function ajaxCompleted(result,status)
@@ -65,7 +65,7 @@ function ajaxCompleted(result,status)
         title:'Select a Donation or Progress ',
         resizable:false,
         buttons:[
-            {text: "Apply", click: function() {tinymce.execCommand('rednao_smart_donations_short_code_clicked', false, rnJQuery('#smartDonationsDonationList').val())}},
+            {text: "Apply", click: function() {tinymce.execCommand('rednao_SMARTFREE_DONATIONS_short_code_clicked', false, rnJQuery('#smartDonationsDonationList').val())}},
             {text: "Cancel", click: function() {rnJQuery(this).dialog("close")}}
         ],
             create: function(event, ui){
@@ -101,7 +101,7 @@ function ajaxCompleted(result,status)
             if(rnJQuery("#redNaoSelection").val()=='button')
             {
                 var data={
-                    action:"rednao_smart_donations_list"
+                    action:"rednao_SMARTFREE_DONATIONS_list"
                 };
 
 
@@ -116,14 +116,8 @@ function ajaxCompleted(result,status)
             else
                 {
                     var data={
-                        action:"rednao_smart_donations_campaign_list"
+                        action:"rednao_SMARTFREE_DONATIONS_campaign_list"
                     };
-
-                    if(smartDonationsLc==0)
-                    {
-                        alert('Sorry you need a license to use this feature');
-                        return;
-                    }
 
                     rnJQuery.post(ajaxurl,data,function(result)
                     {

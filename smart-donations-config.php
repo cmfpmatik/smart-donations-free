@@ -11,16 +11,16 @@ global $wpdb;
 if(!defined('ABSPATH'))
     die('Forbidden');
 
-define('SMART_DONATIONS_PLUGIN_NAME',dirname(plugin_basename(__FILE__)));
-define('SMART_DONATIONS_DIR',WP_PLUGIN_DIR.'/'.SMART_DONATIONS_PLUGIN_NAME);
-define('SMART_DONATIONS_TABLE_NAME',$wpdb->prefix . "smart_donations_donation_item");
-define('SMART_DONATIONS_TRANSACTION_TABLE',$wpdb->prefix . "smart_donations_transaction_table");
-define('SMART_DONATIONS_CAMPAIGN_TABLE',$wpdb->prefix . "smart_donations_campaign_table");
-define('SMART_DONATIONS_PROGRESS_TABLE',$wpdb->prefix . "smart_donations_progress_table");
-define('SMART_DONATIONS_LATEST_DB_VERSION',11);
+define('SMARTFREE_DONATIONS_PLUGIN_NAME',dirname(plugin_basename(__FILE__)));
+define('SMARTFREE_DONATIONS_DIR',WP_PLUGIN_DIR.'/'.SMARTFREE_DONATIONS_PLUGIN_NAME);
+define('SMARTFREE_DONATIONS_TABLE_NAME',$wpdb->prefix . "SMARTFREE_DONATIONS_donation_item");
+define('SMARTFREE_DONATIONS_TRANSACTION_TABLE',$wpdb->prefix . "SMARTFREE_DONATIONS_transaction_table");
+define('SMARTFREE_DONATIONS_CAMPAIGN_TABLE',$wpdb->prefix . "SMARTFREE_DONATIONS_campaign_table");
+define('SMARTFREE_DONATIONS_PROGRESS_TABLE',$wpdb->prefix . "SMARTFREE_DONATIONS_progress_table");
+define('SMARTFREE_DONATIONS_LATEST_DB_VERSION',11);
 define('REDNAO_URL',"http://rednao.com/");
-define('SMART_DONATIONS_VERSION',11);
-define('SMART_DONATIONS_PLUGIN_URL', plugin_dir_url(__FILE__));
-define('SMART_DONATIONS_SANDBOX','n');
-define('SMART_DONATIONS_REQUIRED_ROLE','manage_options')
+define('SMARTFREE_DONATIONS_VERSION',11);
+define('SMARTFREE_DONATIONS_PLUGIN_URL', plugin_dir_url(__FILE__));
+define('SMARTFREE_DONATIONS_SANDBOX','n');
+define('SMARTFREE_DONATIONS_REQUIRED_ROLE','manage_options')
 ?>

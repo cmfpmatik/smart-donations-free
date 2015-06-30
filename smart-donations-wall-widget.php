@@ -1,27 +1,21 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: edseventeen
- * Date: 3/31/13
- * Time: 8:06 AM
- * To change this template use File | Settings | File Templates.
- */
-require_once("smart-donations-helpers.php");
-add_action( 'widgets_init', 'rednao_smart_donations_register_donation_wall_widget' );
 
-function rednao_smart_donations_register_donation_wall_widget()
+require_once("smart-donations-helpers.php");
+add_action( 'widgets_init', 'rednao_SMARTFREE_DONATIONS_register_donation_wall_widget' );
+
+function rednao_SMARTFREE_DONATIONS_register_donation_wall_widget()
 {
-    register_widget('rednao_smart_donations_wall_widget');
+    register_widget('rednao_SMARTFREE_DONATIONS_wall_widget');
 }
 
-class rednao_smart_donations_wall_widget extends WP_Widget
+class rednao_SMARTFREE_DONATIONS_wall_widget extends WP_Widget
 {
-    function rednao_smart_donations_wall_widget()
+    function rednao_SMARTFREE_DONATIONS_wall_widget()
     {
         $widget_ops = array(
-            'classname' => 'rednao_smart_donations_wall_widget', 'description' => __('Create a donation wall')
+            'classname' => 'rednao_SMARTFREE_DONATIONS_wall_widget', 'description' => __('Create a donation wall')
         );
-        $this->WP_Widget( 'rednao_smart_donations_wall_widget', __('Smart Donations - Donation Wall'),$widget_ops );
+        $this->WP_Widget( 'rednao_SMARTFREE_DONATIONS_wall_widget', __('Smart Donations - Donation Wall'),$widget_ops );
     }
 
     function form($instance)
@@ -36,7 +30,7 @@ class rednao_smart_donations_wall_widget extends WP_Widget
         $thousand_separator = $instance['thousand_separator'];
 
         global $wpdb;
-        $results =$wpdb->get_results('select campaign_id,name from '.SMART_DONATIONS_CAMPAIGN_TABLE);
+        $results =$wpdb->get_results('select campaign_id,name from '.SMARTFREE_DONATIONS_CAMPAIGN_TABLE);
 
         ?>
 
@@ -86,12 +80,12 @@ class rednao_smart_donations_wall_widget extends WP_Widget
         $new_instance['decimal_sign'] =strip_tags($new_instance['decimal_sign']);
         $new_instance['thousand_separator'] =strip_tags($new_instance['thousand_separator']);
 
-        delete_transient("rednao_smart_donations_wall_".$new_instance['campaign_id']);
+        delete_transient("rednao_SMARTFREE_DONATIONS_wall_".$new_instance['campaign_id']);
         return $new_instance;
     }
 
     function widget($args, $instance) { // displays the widget
-        return rednao_smart_donations_load_wall($instance['campaign_id'],$instance['title'],$instance['number_of_records'],$instance['currency_sign'],$instance['decimal_sign'],$instance['thousand_separator'],false);
+        return rednao_SMARTFREE_DONATIONS_load_wall($instance['campaign_id'],$instance['title'],$instance['number_of_records'],$instance['currency_sign'],$instance['decimal_sign'],$instance['thousand_separator'],false);
 
     }
 

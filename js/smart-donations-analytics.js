@@ -133,7 +133,7 @@ rnJQuery(function () {
 
 
         var data = {
-            action: "rednao_smart_donations_execute_analytics",
+            action: "rednao_SMARTFREE_DONATIONS_execute_analytics",
             startDate: startDate,
             endDate: endDate,
             displayType: displayType,
@@ -173,7 +173,7 @@ rnJQuery(function () {
             //selectedSerie = SerieToString(neighbor.seriesIndex);
 
 
-            Grid[0].p.url = ajaxurl+'?action=rednao_smart_donations_execute_analytics_list&date=' + selectedDate +
+            Grid[0].p.url = ajaxurl+'?action=rednao_SMARTFREE_DONATIONS_execute_analytics_list&date=' + selectedDate +
                 '&campaign_Id=' + GridCampaign_Id+'&displayType='+GridDisplayType;
             Grid[0].grid.populate();
 
@@ -234,7 +234,7 @@ rnJQuery(function () {
     /*----------------------------------------------------------------------------GRID------------------------------*/
 
     rnJQuery(document).ready(function ($) {
-        Grid=rnJQuery('#grid').jqGrid({"width": "1000", "hoverrows": true,mtype:"POST",  "viewrecords": true, "jsonReader": {"repeatitems": false, "subgrid": {"repeatitems": false}}, "gridview": true, "url": ajaxurl+"?action=rednao_smart_donations_execute_analytics_list", "editurl": ajaxurl+"?action=rednao_smart_donations_execute_analytics_op", "cellurl": ajaxurl+"?action=rednao_smart_donations_execute_analytics_op",  "rowList": [10, 20, 30], "sortname": "TransactionId", "datatype": "json", "colModel": [
+        Grid=rnJQuery('#grid').jqGrid({"width": "1000", "hoverrows": true,mtype:"POST",  "viewrecords": true, "jsonReader": {"repeatitems": false, "subgrid": {"repeatitems": false}}, "gridview": true, "url": ajaxurl+"?action=rednao_SMARTFREE_DONATIONS_execute_analytics_list", "editurl": ajaxurl+"?action=rednao_SMARTFREE_DONATIONS_execute_analytics_op", "cellurl": ajaxurl+"?action=rednao_SMARTFREE_DONATIONS_execute_analytics_op",  "rowList": [10, 20, 30], "sortname": "TransactionId", "datatype": "json", "colModel": [
             {"name": "actions", "formatter": "actions", "editable": false, "sortable": false, "resizable": false, "fixed": true, "width": 60, "formatoptions": {"keys": true}},
             {"name": "TransactionId", "index": "TransactionId", "sorttype": "int", "key": true, "editable": false,hidden:true},
             {"name": "Date", "index": "Date", "sorttype": "datetime", "formatter": "date", "formatoptions": {"srcformat": "Y-m-d H:i:s", "newformat": "Y-m-d"}, "editable": true,"editoptions": {"dataInit": function(elm) {

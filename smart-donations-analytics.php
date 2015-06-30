@@ -29,16 +29,16 @@ wp_enqueue_style('smart-donations-Slider',plugin_dir_url(__FILE__).'css/smartDon
 
 
 
-wp_enqueue_style('smart-donations-bootstrap-theme',SMART_DONATIONS_PLUGIN_URL.'css/bootstrap/bootstrap-theme.css');
-wp_enqueue_style('smart-donations-bootstrap',SMART_DONATIONS_PLUGIN_URL.'css/bootstrap/bootstrap-scopped.css');
-wp_enqueue_style('smart-donations-ladda',SMART_DONATIONS_PLUGIN_URL.'css/bootstrap/ladda-themeless.min.css');
+wp_enqueue_style('smart-donations-bootstrap-theme',SMARTFREE_DONATIONS_PLUGIN_URL.'css/bootstrap/bootstrap-theme.css');
+wp_enqueue_style('smart-donations-bootstrap',SMARTFREE_DONATIONS_PLUGIN_URL.'css/bootstrap/bootstrap-scopped.css');
+wp_enqueue_style('smart-donations-ladda',SMARTFREE_DONATIONS_PLUGIN_URL.'css/bootstrap/ladda-themeless.min.css');
 
 
 
-wp_enqueue_script('smart-donations-bootstrap-theme',SMART_DONATIONS_PLUGIN_URL.'js/bootstrap/bootstrapUtils.js',array('isolated-slider'));
-wp_enqueue_script('smart-donations-bootstrap-js',SMART_DONATIONS_PLUGIN_URL.'js/bootstrap/bootstrap.min.js',array('jquery'));
-wp_enqueue_script('smart-donations-spin-js',SMART_DONATIONS_PLUGIN_URL.'js/bootstrap/spin.min.js');
-wp_enqueue_script('smart-donations-ladda-js',SMART_DONATIONS_PLUGIN_URL.'js/bootstrap/ladda.min.js',array('smart-donations-spin-js'));
+wp_enqueue_script('smart-donations-bootstrap-theme',SMARTFREE_DONATIONS_PLUGIN_URL.'js/bootstrap/bootstrapUtils.js',array('isolated-slider'));
+wp_enqueue_script('smart-donations-bootstrap-js',SMARTFREE_DONATIONS_PLUGIN_URL.'js/bootstrap/bootstrap.min.js',array('jquery'));
+wp_enqueue_script('smart-donations-spin-js',SMARTFREE_DONATIONS_PLUGIN_URL.'js/bootstrap/spin.min.js');
+wp_enqueue_script('smart-donations-ladda-js',SMARTFREE_DONATIONS_PLUGIN_URL.'js/bootstrap/ladda.min.js',array('smart-donations-spin-js'));
 
 
 
@@ -68,7 +68,7 @@ require_once('smart-donations-messages.php');
         <option value="0" selected="selected">Default</option>
         <?php
         global $wpdb;
-        $results=$wpdb->get_results("select campaign_id,name from ".SMART_DONATIONS_CAMPAIGN_TABLE);
+        $results=$wpdb->get_results("select campaign_id,name from ".SMARTFREE_DONATIONS_CAMPAIGN_TABLE);
 
         foreach($results as $result)
         {

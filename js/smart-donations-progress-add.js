@@ -138,7 +138,7 @@ rnJQuery(function()
         button.attr('disabled', 'disabled');
         button.text("Saving...");
 
-        var progressOptions=rnJQuery("#smart_donations_component_options, #smart_donations_component_options form").serialize();
+        var progressOptions=rnJQuery("#SMARTFREE_DONATIONS_component_options, #SMARTFREE_DONATIONS_component_options form").serialize();
 
         var stylesToSave="";
 
@@ -152,7 +152,7 @@ rnJQuery(function()
             stylesToSave=rnJQuery.param(smartDonationsDonationType.generator.styles);
 
         var data={
-            action:"rednao_smart_donations_save_progress_bar",
+            action:"rednao_SMARTFREE_DONATIONS_save_progress_bar",
             progress_name:rnJQuery("#tb_progress_name").val(),
             campaign_id:rnJQuery("#select_campaign_id").val(),
             progress_id:rnJQuery("#smartDonationsProgressId").val(),

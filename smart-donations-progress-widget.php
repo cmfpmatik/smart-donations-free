@@ -7,21 +7,21 @@
  * To change this template use File | Settings | File Templates.
  */
 require_once("smart-donations-helpers.php");
-add_action( 'widgets_init', 'rednao_smart_donations_register_progress_widget' );
+add_action( 'widgets_init', 'rednao_SMARTFREE_DONATIONS_register_progress_widget' );
 
-function rednao_smart_donations_register_progress_widget()
+function rednao_SMARTFREE_DONATIONS_register_progress_widget()
 {
-    register_widget('rednao_smart_donations_progress_widget');
+    register_widget('rednao_SMARTFREE_DONATIONS_progress_widget');
 }
 
-class rednao_smart_donations_progress_widget extends WP_Widget
+class rednao_SMARTFREE_DONATIONS_progress_widget extends WP_Widget
 {
-    function rednao_smart_donations_progress_widget()
+    function rednao_SMARTFREE_DONATIONS_progress_widget()
     {
         $widget_ops = array(
-            'classname' => 'rednao_smart_donations_progress_widget', 'description' => 'Let you insert an progress indicator in any area'
+            'classname' => 'rednao_SMARTFREE_DONATIONS_progress_widget', 'description' => 'Let you insert an progress indicator in any area'
         );
-        $this->WP_Widget( 'rednao_smart_donations_progress_widget', 'Smart Donations - Progress Indicator',$widget_ops );
+        $this->WP_Widget( 'rednao_SMARTFREE_DONATIONS_progress_widget', 'Smart Donations - Progress Indicator',$widget_ops );
     }
 
     function form($instance)
@@ -32,7 +32,7 @@ class rednao_smart_donations_progress_widget extends WP_Widget
         $title = $instance['title'];
 
         global $wpdb;
-        $results =$wpdb->get_results('select progress_id,progress_name from '.SMART_DONATIONS_PROGRESS_TABLE);
+        $results =$wpdb->get_results('select progress_id,progress_name from '.SMARTFREE_DONATIONS_PROGRESS_TABLE);
 
         ?>
 
@@ -59,13 +59,13 @@ class rednao_smart_donations_progress_widget extends WP_Widget
         $new_instance['title'] =strip_tags($new_instance['title']);
         $new_instance['progress_id'] =strip_tags($new_instance['progress_id']);
 
-        delete_transient("rednao_smart_donations_progress_".$new_instance['progress_id']);
+        delete_transient("rednao_SMARTFREE_DONATIONS_progress_".$new_instance['progress_id']);
         return $new_instance;
     }
 
     function widget($args, $instance) { // displays the widget
         $id=$instance['progress_id'];
-        return rednao_smart_donations_load_progress($id,$instance['title'],false);
+        return rednao_SMARTFREE_DONATIONS_load_progress($id,$instance['title'],false);
     }
 
 

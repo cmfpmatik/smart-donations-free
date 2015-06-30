@@ -9,7 +9,7 @@
 
 
 
-class smart_donations_db_privider {
+class SMARTFREE_DONATIONS_db_privider {
     private $_TransactionIsRepeated=NULL;
 
     public function InsertTransaction($properties)
@@ -28,7 +28,7 @@ class smart_donations_db_privider {
         if($this->_TransactionIsRepeated===NULL)
         {
             global $wpdb;
-			$query=$wpdb->prepare("select count(*) from ".SMART_DONATIONS_TRANSACTION_TABLE." where txn_id=%s",$properties['txn_id']);
+			$query=$wpdb->prepare("select count(*) from ".SMARTFREE_DONATIONS_TRANSACTION_TABLE." where txn_id=%s",$properties['txn_id']);
 			$this->_TransactionIsRepeated=($wpdb->get_var($query)>0);
         }
         return $this->_TransactionIsRepeated;
@@ -37,7 +37,7 @@ class smart_donations_db_privider {
 	public function SubscriptionAlreadyExists($properties)
 	{
 		global $wpdb;
-		return $wpdb->get_var($wpdb->prepare("select count(*) from ".SMART_DONATIONS_TRANSACTION_TABLE." where subscr_id=%s ",$properties['subscr_id']))>0;
+		return $wpdb->get_var($wpdb->prepare("select count(*) from ".SMARTFREE_DONATIONS_TRANSACTION_TABLE." where subscr_id=%s ",$properties['subscr_id']))>0;
 	}
 
     private function InsertIntoDatabase($properties)
@@ -49,14 +49,14 @@ class smart_donations_db_privider {
 
 		}
         global $wpdb;
-        $wpdb->insert(SMART_DONATIONS_TRANSACTION_TABLE,$properties);
+        $wpdb->insert(SMARTFREE_DONATIONS_TRANSACTION_TABLE,$properties);
 		return $wpdb->insert_id;
     }
 
 	private  function RecurrentDonationWasAnonymous($properties)
 	{
 		global $wpdb;
-		$isAnonymous= $wpdb->get_var($wpdb->prepare("select count(*) from ".SMART_DONATIONS_TRANSACTION_TABLE." where subscr_id=%s and is_anonymous=1 ",$properties['subscr_id']))>0;
+		$isAnonymous= $wpdb->get_var($wpdb->prepare("select count(*) from ".SMARTFREE_DONATIONS_TRANSACTION_TABLE." where subscr_id=%s and is_anonymous=1 ",$properties['subscr_id']))>0;
 		return $isAnonymous;
 	}
 
@@ -80,7 +80,7 @@ class smart_donations_db_privider {
     public function RefundTransaction($txn_id)
     {
         global $wpdb;
-        $wpdb->query($wpdb->prepare("delete from ".SMART_DONATIONS_TRANSACTION_TABLE." WHERE txn_id=%s",$txn_id));
+        $wpdb->query($wpdb->prepare("delete from ".SMARTFREE_DONATIONS_TRANSACTION_TABLE." WHERE txn_id=%s",$txn_id));
 
 
 

@@ -3,20 +3,20 @@
 if(!defined('ABSPATH'))
     die('Forbidden');
 
-wp_enqueue_style('smart-donations-bootstrap-theme',SMART_DONATIONS_PLUGIN_URL.'css/bootstrap/bootstrap-theme.css');
-wp_enqueue_style('smart-donations-bootstrap',SMART_DONATIONS_PLUGIN_URL.'css/bootstrap/bootstrap-scopped.css');
+wp_enqueue_style('smart-donations-bootstrap-theme',SMARTFREE_DONATIONS_PLUGIN_URL.'css/bootstrap/bootstrap-theme.css');
+wp_enqueue_style('smart-donations-bootstrap',SMARTFREE_DONATIONS_PLUGIN_URL.'css/bootstrap/bootstrap-scopped.css');
 
 wp_enqueue_script('jquery');
 wp_enqueue_script('isolated-slider',plugin_dir_url(__FILE__).'js/rednao-isolated-jq.js',array('jquery'));
 wp_enqueue_script('campaigns',plugin_dir_url(__FILE__).'js/smart-donations-campaigns.js',array('isolated-slider'));
 wp_enqueue_style('smart-donations-main-style',plugin_dir_url(__FILE__).'css/mainStyle.css');
 wp_enqueue_style('smart-donations-Slider',plugin_dir_url(__FILE__).'css/smartDonationsSlider/jquery-ui-1.10.2.custom.min.css');
-wp_enqueue_style('smart-donations-ladda',SMART_DONATIONS_PLUGIN_URL.'css/bootstrap/ladda-themeless.min.css');
+wp_enqueue_style('smart-donations-ladda',SMARTFREE_DONATIONS_PLUGIN_URL.'css/bootstrap/ladda-themeless.min.css');
 
-wp_enqueue_script('smart-donations-bootstrap-theme',SMART_DONATIONS_PLUGIN_URL.'js/bootstrap/bootstrapUtils.js',array('isolated-slider'));
-wp_enqueue_script('smart-donations-bootstrap-js',SMART_DONATIONS_PLUGIN_URL.'js/bootstrap/bootstrap.min.js',array('isolated-slider'));
-wp_enqueue_script('smart-donations-spin-js',SMART_DONATIONS_PLUGIN_URL.'js/bootstrap/spin.min.js');
-wp_enqueue_script('smart-donations-ladda-js',SMART_DONATIONS_PLUGIN_URL.'js/bootstrap/ladda.min.js',array('smart-donations-spin-js'));
+wp_enqueue_script('smart-donations-bootstrap-theme',SMARTFREE_DONATIONS_PLUGIN_URL.'js/bootstrap/bootstrapUtils.js',array('isolated-slider'));
+wp_enqueue_script('smart-donations-bootstrap-js',SMARTFREE_DONATIONS_PLUGIN_URL.'js/bootstrap/bootstrap.min.js',array('isolated-slider'));
+wp_enqueue_script('smart-donations-spin-js',SMARTFREE_DONATIONS_PLUGIN_URL.'js/bootstrap/spin.min.js');
+wp_enqueue_script('smart-donations-ladda-js',SMARTFREE_DONATIONS_PLUGIN_URL.'js/bootstrap/ladda.min.js',array('smart-donations-spin-js'));
 
 require_once('smart-donations-messages.php');
 
@@ -40,19 +40,19 @@ echo "<div class='bootstrap-wrapper'>";
 
 					<div class='form-group'>
 						<label class='control-label col-xs-3'>Name</label>
-						<div class='col-xs-6'><input type="text" id="smart_donations_campaign_name" name="name" class="smartDonationsConfigurationFields form-control"></div>
+						<div class='col-xs-6'><input type="text" id="SMARTFREE_DONATIONS_campaign_name" name="name" class="smartDonationsConfigurationFields form-control"></div>
 					</div>
 
 
 					<div class='form-group'>
 						<label class='control-label col-xs-3'>Description</label>
-						<div class='col-xs-6'><input type="text" id="smart_donations_campaign_description" name="description" class="smartDonationsConfigurationFields form-control"></div>
+						<div class='col-xs-6'><input type="text" id="SMARTFREE_DONATIONS_campaign_description" name="description" class="smartDonationsConfigurationFields form-control"></div>
 					</div>
 
 
 					<div class='form-group'>
 						<label class='control-label col-xs-3'>Goal</label>
-						<div class='col-xs-6'><input type="text" name="goal" id="smart_donations_campaign_goal" class="smartDonationsConfigurationFields smartDonationsNumericField form-control"></div>
+						<div class='col-xs-6'><input type="text" name="goal" id="SMARTFREE_DONATIONS_campaign_goal" class="smartDonationsConfigurationFields smartDonationsNumericField form-control"></div>
 					</div>
 
 
@@ -114,7 +114,7 @@ if($action!=null&&$campaign_id!=null)
     global $wpdb;
 
     if($action==="delete")
-        $wpdb->query($wpdb->prepare("delete from ".SMART_DONATIONS_CAMPAIGN_TABLE." WHERE campaign_id=%d",$campaign_id));
+        $wpdb->query($wpdb->prepare("delete from ".SMARTFREE_DONATIONS_CAMPAIGN_TABLE." WHERE campaign_id=%d",$campaign_id));
 
 }
 
@@ -135,7 +135,7 @@ class Donations extends WP_List_Table
     {
         $this->_column_headers=array($this->get_columns(),array('campaign_id'),$this->get_sortable_columns());
         global $wpdb;
-        $this->items=$result=$wpdb->get_results("SELECT campaign_id,name,description,goal,thank_you_email,email_subject,email_from FROM ".SMART_DONATIONS_CAMPAIGN_TABLE);
+        $this->items=$result=$wpdb->get_results("SELECT campaign_id,name,description,goal,thank_you_email,email_subject,email_from FROM ".SMARTFREE_DONATIONS_CAMPAIGN_TABLE);
 
         if(count($this->items)>0)
         {
@@ -190,17 +190,17 @@ $donationList->display();
     <table>
         <tr>
             <td>Name</td>
-            <td><input type="text" id="smart_donations_campaign_name" name="name" class="smartDonationsConfigurationFields"></td>
+            <td><input type="text" id="SMARTFREE_DONATIONS_campaign_name" name="name" class="smartDonationsConfigurationFields"></td>
         </tr>
 
         <tr>
             <td>Description</td>
-            <td><input type="text" id="smart_donations_campaign_description" name="description" class="smartDonationsConfigurationFields"></td>
+            <td><input type="text" id="SMARTFREE_DONATIONS_campaign_description" name="description" class="smartDonationsConfigurationFields"></td>
         </tr>
 
         <tr>
             <td>Goal</td>
-            <td><input type="text" name="goal" id="smart_donations_campaign_goal" class="smartDonationsConfigurationFields smartDonationsNumericField"></td>
+            <td><input type="text" name="goal" id="SMARTFREE_DONATIONS_campaign_goal" class="smartDonationsConfigurationFields smartDonationsNumericField"></td>
         </tr>
 
 

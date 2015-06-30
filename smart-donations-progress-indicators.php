@@ -3,14 +3,14 @@
 if(!defined('ABSPATH'))
     die('Forbidden');
 
-wp_enqueue_style('smart-donations-bootstrap-theme',SMART_DONATIONS_PLUGIN_URL.'css/bootstrap/bootstrap-theme.css');
-wp_enqueue_style('smart-donations-bootstrap',SMART_DONATIONS_PLUGIN_URL.'css/bootstrap/bootstrap-scopped.css');
-wp_enqueue_style('smart-donations-ladda',SMART_DONATIONS_PLUGIN_URL.'css/bootstrap/ladda-themeless.min.css');
+wp_enqueue_style('smart-donations-bootstrap-theme',SMARTFREE_DONATIONS_PLUGIN_URL.'css/bootstrap/bootstrap-theme.css');
+wp_enqueue_style('smart-donations-bootstrap',SMARTFREE_DONATIONS_PLUGIN_URL.'css/bootstrap/bootstrap-scopped.css');
+wp_enqueue_style('smart-donations-ladda',SMARTFREE_DONATIONS_PLUGIN_URL.'css/bootstrap/ladda-themeless.min.css');
 
-wp_enqueue_script('smart-donations-bootstrap-theme',SMART_DONATIONS_PLUGIN_URL.'js/bootstrap/bootstrapUtils.js',array('isolated-slider'));
-wp_enqueue_script('smart-donations-bootstrap-js',SMART_DONATIONS_PLUGIN_URL.'js/bootstrap/bootstrap.min.js',array('isolated-slider'));
-wp_enqueue_script('smart-donations-spin-js',SMART_DONATIONS_PLUGIN_URL.'js/bootstrap/spin.min.js');
-wp_enqueue_script('smart-donations-ladda-js',SMART_DONATIONS_PLUGIN_URL.'js/bootstrap/ladda.min.js',array('smart-donations-spin-js'));
+wp_enqueue_script('smart-donations-bootstrap-theme',SMARTFREE_DONATIONS_PLUGIN_URL.'js/bootstrap/bootstrapUtils.js',array('isolated-slider'));
+wp_enqueue_script('smart-donations-bootstrap-js',SMARTFREE_DONATIONS_PLUGIN_URL.'js/bootstrap/bootstrap.min.js',array('isolated-slider'));
+wp_enqueue_script('smart-donations-spin-js',SMARTFREE_DONATIONS_PLUGIN_URL.'js/bootstrap/spin.min.js');
+wp_enqueue_script('smart-donations-ladda-js',SMARTFREE_DONATIONS_PLUGIN_URL.'js/bootstrap/ladda.min.js',array('smart-donations-spin-js'));
 
 if (isset($_GET['action'])) {
     $action=$_GET['action'];
@@ -42,17 +42,17 @@ if($action!=null)
     if($progress_id!=null)
     {
         if($action==="delete")
-            $wpdb->query($wpdb->prepare("delete from ".SMART_DONATIONS_PROGRESS_TABLE." WHERE progress_id=%d",$progress_id));
+            $wpdb->query($wpdb->prepare("delete from ".SMARTFREE_DONATIONS_PROGRESS_TABLE." WHERE progress_id=%d",$progress_id));
 
 
         if($action==="edit")
         {
-            $result=$wpdb->get_results($wpdb->prepare("SELECT * FROM ".SMART_DONATIONS_PROGRESS_TABLE." WHERE progress_id=%d",$progress_id));
+            $result=$wpdb->get_results($wpdb->prepare("SELECT * FROM ".SMARTFREE_DONATIONS_PROGRESS_TABLE." WHERE progress_id=%d",$progress_id));
 
             if(count($result)>0)
             {
                 $result=$result[0];
-                $options=rednao_smart_donations_json_object($result->options,$result->styles,null,null,null,null);
+                $options=rednao_SMARTFREE_DONATIONS_json_object($result->options,$result->styles,null,null,null,null);
 
                 $script=<<<EOF
                         <script type="text/javascript" language="javascript">
@@ -64,7 +64,7 @@ if($action!=null)
                         </script>
 EOF;
                 echo sprintf($script,$result->progress_id,$result->campaign_id,$result->progress_name,$result->progress_type,$options);
-                include(SMART_DONATIONS_DIR.'/smart-donations-progress-add.php');
+                include(SMARTFREE_DONATIONS_DIR.'/smart-donations-progress-add.php');
                 return;
 
             }
@@ -100,8 +100,8 @@ class Donations extends WP_List_Table
         $this->_column_headers=array($this->get_columns(),array('progress_id'),$this->get_sortable_columns());
         global $wpdb;
         $this->items=$result=$wpdb->get_results("select progress_name,coalesce(campaign.name,'Default') campaign_name,progress_type,progress_id
-                                                    from ".SMART_DONATIONS_PROGRESS_TABLE." progress
-                                                    left join ".SMART_DONATIONS_CAMPAIGN_TABLE." campaign
+                                                    from ".SMARTFREE_DONATIONS_PROGRESS_TABLE." progress
+                                                    left join ".SMARTFREE_DONATIONS_CAMPAIGN_TABLE." campaign
                                                     on campaign.campaign_id=progress.campaign_id ");
     }
 
