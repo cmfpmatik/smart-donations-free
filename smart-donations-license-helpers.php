@@ -34,7 +34,7 @@ function SMARTFREE_DONATIONS_license_is_valid($email,$key,&$error)
     $email=trim($email);
     $key=trim($key);
     delete_transient("SMARTFREE_DONATIONS_check_again");
-    $response=wp_remote_post(REDNAO_URL.'SMARTFREE_DONATIONS_license_validation.php',array('body'=> array( 'email'=>$email,'key'=>$key),'timeout'=>10));
+    $response=wp_remote_post(DEVOARCES_URL.'SMARTFREE_DONATIONS_license_validation.php',array('body'=> array( 'email'=>$email,'key'=>$key),'timeout'=>10));
     if($response instanceof WP_Error)
     {
         $error= $response->get_error_message();

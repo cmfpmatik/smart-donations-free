@@ -1,14 +1,5 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: edseventeen
- * Date: 5/18/13
- * Time: 6:57 PM
- * To change this template use File | Settings | File Templates.
- */
-
-
-
+/
 class SMARTFREE_DONATIONS_db_privider {
     private $_TransactionIsRepeated=NULL;
 
