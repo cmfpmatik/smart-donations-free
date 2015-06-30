@@ -6,9 +6,9 @@
             // Register command for when button is clicked
             ed.addCommand('rednao_SMARTFREE_DONATIONS_short_code_clicked', function(a,donationId) {
                 if(rnJQuery('#redNaoSelection').val()=='button')
-                    tinymce.execCommand('mceInsertContent', false, '[sdonations]'+donationId+'[/sdonations]');
+                    tinymce.execCommand('mceInsertContent', false, '[shortdonations]'+donationId+'[/shortdonations]');
                 if(rnJQuery('#redNaoSelection').val()=='progress')
-                    tinymce.execCommand('mceInsertContent', false, '[sdprogress]'+donationId+'[/sdprogress]');
+                    tinymce.execCommand('mceInsertContent', false, '[shortdprogress]'+donationId+'[/shortdprogress]');
                 if(rnJQuery('#redNaoSelection').val()=='wall')
                 {
                     var shortcode="[sddonwall ";

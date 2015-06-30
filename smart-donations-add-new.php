@@ -592,7 +592,7 @@ wp_enqueue_style('form-builder-custom',plugin_dir_url(__FILE__).'css/formBuilder
 
                         <div class="smartDonationsItem">
                             <input type="hidden"  />
-                            <a href="?page=smart-donations/smartdonations.php&action=add&mode=pro">
+                            <a href="?page=smart-donations/smart-donations-free.php&action=add&mode=pro">
                             <img id="smartDonationsImageForms" src="<?php echo plugin_dir_url(__FILE__)?>images/form_donation.png" alt=""></a>
                         </div>
                         <?php }?>

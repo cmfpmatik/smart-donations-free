@@ -3,7 +3,7 @@ global $wpdb;
 if(!defined('ABSPATH'))
     die('Forbidden');
 
-define('SMARTFREE_DONATIONS_PLUGIN_NAME','smart-donation-free/smartdonations.php');
+define('SMARTFREE_DONATIONS_PLUGIN_NAME',dirname(plugin_basename(__FILE__)));
 define('SMARTFREE_DONATIONS_DIR',WP_PLUGIN_DIR.'/'.SMARTFREE_DONATIONS_PLUGIN_NAME);
 define('SMARTFREE_DONATIONS_TABLE_NAME',$wpdb->prefix . "SMARTFREE_DONATIONS_donation_item");
 define('SMARTFREE_DONATIONS_TRANSACTION_TABLE',$wpdb->prefix . "SMARTFREE_DONATIONS_transaction_table");

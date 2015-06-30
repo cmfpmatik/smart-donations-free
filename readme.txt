@@ -1,4 +1,4 @@
-=== Donations Made Easy - Smart Donations ===
+=== Donations Made Easy - Smart Donations Free ===
 Contributors: EDGARROJAS (original) & Oarces Dev (free version)
 Donate link: -
 Tags: donations, donate, donation buttons, donation widget,widget, paypal, donations, donation page, donation plugin, nonprofit donations, campaign donations, political campaigns, donations, donation widget, donate page, donate plugin,charity, fundraising, shortcode, forms, widgets
@@ -18,15 +18,15 @@ Want to know more? For support and feedback please visit: http://dev.oarces.fr/w
 
 
  The all in one donation plugin, create different kind of donations, set goals, monitor your results, create donation forms, set thank you emails. Currently it supports paypal, stripe and five different styles of donations:
- 
+
  *  **Classic Donation**.- The classic paypal  When The user clicks the button he will be directed to the paypal page and he will define how much he want to donate there.
- 
+
  *  **TextBox Donation**.- A paypal button with a text box so the donors can pick right away how much they want to donate.
-   
+
  * **Three Buttons Donation**.- Three donation buttons (they dont have to be paypal buttons, you can customize them) each one with a different amounts (that you define) so the donators can donate with one click. (Paypal)
-    
+
  *  **Slider Donation**.- This has an slider that the user can scroll to donate more or less money (you define the minimun and maximun amount), it also has a happy face that gets happier or not that happy depending on the donation amount. (Paypal)
- 
+
  * **Forms**.- (Pro feature) You need to ask something to the donors? then Forms donations is the way to go, you can create a custom form the way you want it (you can add text boxes, drop downs, checkboxes etc). Once you get a donation you will get an email with all that information. (Paypal only)
 
 PayPal also support IPN notifications so you can keep track of all the donations, you can show a donation goal meter or analize how well you have been doing in a period of time.
@@ -40,7 +40,7 @@ Also you can customize the paypal currency that you want to use for each donatio
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Go to Smart Donations /Add new and create a new donation, you can use paypal.
 4. To add the donation to a widget go to widgets and drag the smart donations widget
-5. To add the donation to a post type [sdonations]donationid[/sdonations] (example:[sdonations]1[/sdonations]), you can find the donationid of your donation on the donations list (i will improve this on a future update)
+5. To add the donation to a post type [shortdonations]donationid[/sdonations] (example:[shortdonations]1[/shortdonations]), you can find the donationid of your donation on the donations list (i will improve this on a future update)
 
 
 == Frequently Asked Questions ==
