@@ -81,7 +81,6 @@ function SMARTFREE_DONATIONS_create_menu(){
     add_submenu_page('SMARTFREE_DONATIONS_menu','Campaigns','Campaigns',SMARTFREE_DONATIONS_REQUIRED_ROLE,__FILE__.'campaigns', 'rednao_SMARTFREE_DONATIONS_campaigns');
     add_submenu_page('SMARTFREE_DONATIONS_menu','Progress Indicators','Progress Indicators',SMARTFREE_DONATIONS_REQUIRED_ROLE,__FILE__.'progress_indicators', 'rednao_SMARTFREE_DONATIONS_progress_indicators');
     add_submenu_page('SMARTFREE_DONATIONS_menu','Analytics','Analytics',SMARTFREE_DONATIONS_REQUIRED_ROLE,__FILE__.'analytics', 'rednao_SMARTFREE_DONATIONS_analytics');
-    add_submenu_page('SMARTFREE_DONATIONS_menu','Smart Donations - Wish List','Wish List/Support',SMARTFREE_DONATIONS_REQUIRED_ROLE,__FILE__.'wishlist', 'rednao_SMARTFREE_DONATIONS_wish_list');
     add_submenu_page('SMARTFREE_DONATIONS_menu','Settings','Settings',SMARTFREE_DONATIONS_REQUIRED_ROLE,__FILE__.'settings', 'rednao_SMARTFREE_DONATIONS_settings');
 
 
@@ -198,7 +197,6 @@ function rednao_SMARTFREE_DONATIONS_short_code($attr,$content)
     return rednao_SMARTFREE_DONATIONS_load_donation($content,null,true);
 }
 
-
 function rednao_SMARTFREE_DONATIONS_progress_short_code($attr,$content)
 {
     return rednao_SMARTFREE_DONATIONS_load_progress($content,null,true);
@@ -226,42 +224,15 @@ function rednao_SMARTFREE_DONATIONS_campaigns()
 
 function rednao_SMARTFREE_DONATIONS_progress_indicators()
 {
-    require_once('smart-donations-license-helpers.php');
-    if(SMARTFREE_DONATIONS_check_license_with_options($error)||$error!=null)
         include(SMARTFREE_DONATIONS_DIR.'/smart-donations-progress-indicators.php');
-    else
-        include(SMARTFREE_DONATIONS_DIR.'/smart-donations-progress-pro.php');
-
-
 }
 
 function rednao_SMARTFREE_DONATIONS_analytics()
 {
-
-    require_once('smart-donations-license-helpers.php');
-    if(SMARTFREE_DONATIONS_check_license_with_options($error)||$error!=null)
         include(SMARTFREE_DONATIONS_DIR.'/smart-donations-analytics.php');
-    else
-        include(SMARTFREE_DONATIONS_DIR.'/smart-donations-analytics-pro.php');
-
-
-
 }
 
-
-
-function rednao_SMARTFREE_DONATIONS_wish_list()
-{
-    include(SMARTFREE_DONATIONS_DIR.'/smart-donations-wishlist.php');
-}
-
-require_once('smart-donations-license-helpers.php');
-if(SMARTFREE_DONATIONS_check_license_with_options($error)||$error!=null)
-{
-    require_once('smart-donations-wall-widget.php');
-}
-
-
+require_once('smart-donations-wall-widget.php');
 
 add_filter('query_vars','SMARTFREE_DONATIONS_add_trigger');
 function SMARTFREE_DONATIONS_add_trigger($vars) {

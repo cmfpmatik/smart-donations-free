@@ -1,36 +1,8 @@
 
 <?php
-    require_once('smart-donations-license-helpers.php');
-if (isset($_POST['license_email'])) {
-    $email=$_POST['license_email'];
-}else
-    $email='';
 
-if (isset($_POST['license_key'])) {
-    $key=$_POST['license_key'];
-}else
-    $key='';
 
-    $error="";
-    $licensingError=0;
-
-    if($email!=null||$key!=null)
-    {
-        if(SMARTFREE_DONATIONS_check_license($email,$key,$error,true))
-        {
-           echo "Licence validation successful, you can now use the pro features =). Thanks!!";
-            return;
-        }
-        else{
-            if($error==null)
-                $error="Invalid user or license key";
-            echo "<div class='error below-h2'><p><strong>Error:</strong> $error</p></div>";
-            $licensingError=1;
-
-        }
-    }
-
-    echo "<script type='text/javascript' language='javascript'>var smartDonationsLicensingError=$licensingError;var smartDonationsEmail='$email';var smartDonationsKey='$key'</script>";
+    echo "<script type='text/javascript' language='javascript'>var smartDonationsLicensingError=0;var smartDonationsEmail='ttt@tt.tt';var smartDonationsKey='1</script>";
 
 
 

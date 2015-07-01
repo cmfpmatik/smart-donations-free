@@ -35,8 +35,8 @@ if(isset($_GET["posting"]))
 ?>
 
 <div>
-    <form action="?page=smart-donations/smartdonations.phpsettings" method="GET">
-        <input type="hidden" name="page" value="smart-donations/smartdonations.phpsettings"/>
+    <form action="?page=smart-donations-free/smart-donations-free.phpsettings" method="GET">
+        <input type="hidden" name="page" value="smart-donations-free/smart-donations-free.phpsettings"/>
         <input type="hidden" name="posting" value="y">
         <table style="padding:10px;">
             <tr>

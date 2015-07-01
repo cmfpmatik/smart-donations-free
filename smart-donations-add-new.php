@@ -6,11 +6,8 @@ if(!defined('ABSPATH'))
 
 require_once('smart-donations-license-helpers.php');
 require_once(SMARTFREE_DONATIONS_DIR.'/donation_provider/donation_provider_config.php');
-if(isset($_GET['mode'])&&$_GET['mode']=='pro')
-{
-    require_once(SMARTFREE_DONATIONS_DIR.'/smart-donations-forms-pro.php');
-    return;
-}
+require_once(SMARTFREE_DONATIONS_DIR.'/smart-donations-forms-pro.php');
+
 
 global $wpdb;
 
@@ -86,7 +83,7 @@ wp_enqueue_style('form-builder-custom',plugin_dir_url(__FILE__).'css/formBuilder
         function setCurrencyOptions(provider)
         {
             var providerCurrencies;
-			providerCurrencies=provider.Currencies;
+	providerCurrencies=provider.Currencies;
 
 
             var comboCurrencies=rnJQuery("#smartDonationsCurrencyDropDown");

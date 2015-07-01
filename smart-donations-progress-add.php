@@ -1,12 +1,5 @@
 
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: edseventeen
- * Date: 3/29/13
- * Time: 9:29 AM
- * To change this template use File | Settings | File Templates.
- */
 
 if(!defined('ABSPATH'))
     die('Forbidden');

@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: edseventeen
- * Date: 4/1/13
- * Time: 8:44 PM
- * To change this template use File | Settings | File Templates.
- */
 
     wp_enqueue_script("jquery");
 ?>
